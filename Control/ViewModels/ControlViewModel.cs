@@ -9,16 +9,20 @@ namespace FacActionsCountControl.Control.ViewModels
 	internal interface IControlViewModel
 	{
 		int Rotation { get; }
+		bool OverlayIsVisible { get; }
 		IActionsCountModel ActionsCount { get; }
 		IOverviewModel Overview { get; }
 
 		IRelayCommand LoadedCommand { get; }
 		IRelayCommand NextPlayerCommand { get; }
+		IRelayCommand StartControlCommand { get; }
 	}
 
 	internal partial class ControlViewModel : ObservableObject, IControlViewModel
 	{
 		[ObservableProperty] private int _rotation;
+		[ObservableProperty] private bool _overlayIsVisible;
+
 		private readonly IPlayerTimeService _playerTimeService;
 		private readonly IPlayerService _playerService;
 
@@ -37,9 +41,6 @@ namespace FacActionsCountControl.Control.ViewModels
 		{
 			InitLayout();
 			InitOverview();
-
-			// Dummy, move later to start game command
-			StartPlayerTime();
 		}
 
 		[RelayCommand]
@@ -49,16 +50,35 @@ namespace FacActionsCountControl.Control.ViewModels
 			UpdateOverview();
 		}
 
+		[RelayCommand]
+		public void StartControl()
+		{
+			OverlayIsVisible = false;
+			StartPlayerTime();
+		}
 
 		private void InitLayout()
 		{
 			Rotation = 0;
+			OverlayIsVisible = true;
 		}
 
 		private void InitOverview()
 		{
 			Overview.CurrentPlayerName = _playerService.GetFirstPlayerName();
 			Overview.Turn = 1;
+		}
+
+		private void StartPlayerTime()
+		{
+			var timer = new System.Threading.Timer(obj => { RaisePlayerTime(); }, null,
+				TimeSpan.FromSeconds(1),
+				TimeSpan.FromSeconds(1));
+		}
+
+		private void RaisePlayerTime()
+		{
+			Overview.PlayerTime = _playerTimeService.RaisePlayerTime(Overview.CurrentPlayerName).ToString();
 		}
 
 		private void UpdateLayout()
@@ -75,18 +95,6 @@ namespace FacActionsCountControl.Control.ViewModels
 			if (Overview.Turn % 5 == 0)
 			{
 			}
-		}
-
-		private void StartPlayerTime()
-		{
-			var timer = new System.Threading.Timer(obj => { RaisePlayerTime(); }, null,
-				TimeSpan.FromSeconds(1),
-				TimeSpan.FromSeconds(1));
-		}
-
-		private void RaisePlayerTime()
-		{
-			Overview.PlayerTime = _playerTimeService.RaisePlayerTime(Overview.CurrentPlayerName).ToString();
 		}
 	}
 }
