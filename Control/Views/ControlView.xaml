@@ -1,12 +1,53 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="FacActionsCountControl.Control.Views.ControlView"
-             Title="ControlView">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+<ContentPage
+    x:Class="FacActionsCountControl.Control.Views.ControlView"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:views="clr-namespace:FacActionsCountControl.Control.Views"
+    Title="Control">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="10" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="5" />
+            <ColumnDefinition />
+            <ColumnDefinition Width="5" />
+        </Grid.ColumnDefinitions>
+
+        <Border
+            Grid.Row="1"
+            Grid.Column="1"
+            Padding="0,5,0,5"
+            Background="Black"
+            StrokeShape="RoundRectangle 5,5,5,5"
+            StrokeThickness="0.5">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <views:KeyValueView Key="Next" />
+                <views:KeyValueView Key="Turn" Grid.Column="1" />
+                <views:KeyValueView Key="Time" Grid.Column="2" />
+            </Grid>
+        </Border>
+
+
+        <StackLayout Grid.Row="3" Grid.Column="1">
+            <views:KeyValueView Key="Draw" />
+            <views:KeyValueView Key="Summon" />
+            <views:KeyValueView Key="Spell" />
+            <views:KeyValueView Key="Buy" />
+            <views:KeyValueView Key="Attach" />
+            <views:KeyValueView Key="Attack" />
+        </StackLayout>
+
+    </Grid>
 </ContentPage>

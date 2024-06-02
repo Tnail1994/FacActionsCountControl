@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView
+    x:Class="FacActionsCountControl.Control.Views.KeyValueView"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:FacActionsCountControl.Control.Views"
+    Margin="8,5,8,5">
+
+
+    <ContentView.Resources>
+        <Style TargetType="Label">
+            <Setter Property="FontSize" Value="32" />
+            <Setter Property="VerticalOptions" Value="Center" />
+            <Setter Property="VerticalTextAlignment" Value="Center" />
+            <Setter Property="Margin" Value="5,1,5,3" />
+        </Style>
+    </ContentView.Resources>
+    <Border Background="Gray" StrokeShape="RoundRectangle 10">
+        <Grid Margin="2.5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <Label
+                Grid.Column="0"
+                HorizontalOptions="Start"
+                Text="{Binding Path=Key, Source={RelativeSource AncestorType={x:Type local:KeyValueView}}}" />
+
+            <Label
+                Grid.Column="1"
+                HorizontalOptions="End"
+                Text="{Binding Value, FallbackValue=Value}" />
+        </Grid>
+    </Border>
+
+</ContentView>

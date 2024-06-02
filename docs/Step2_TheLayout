@@ -1,6 +1,6 @@
 Thinking about the layout, should happend in Step 0. But because this is a tutorial, I provide the layout and architecture and the following steps.
 
-Requirements:
+## Requirements
 - Need a main page
     - to start the "game" control
     - tap on the screen, to switch player and add turn counter. this also swaps the screen, that current player can see values
@@ -10,6 +10,13 @@ Requirements:
     - and provide "tutorial" -> Info just to tap on the screen to start and swap
     
 Very simple app design. We use a tab menu for the shell.
+
+## Before you start
+
+- Think about your color palette
+- Think about controls abstraction
+
+## Start
 
 1. Creating the tab menu inside the AppShell.xaml
 
@@ -53,3 +60,7 @@ If you starting the application, then their will be two main pages instantiate. 
 - Change the AppShell
     - Adding namespaces for the views
     - changing DataTemplates of the ShellContent
+
+
+3. Bring live to our first page
+First of all, we just simple structure our layout for the Control page. We just need one simple control we have to create. A control which has a settable Key and Value properties. these are just simple strings.
