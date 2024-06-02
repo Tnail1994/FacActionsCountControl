@@ -57,6 +57,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
 		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
 		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
@@ -65,11 +66,9 @@
 	<ItemGroup>
 	  <Folder Include="Control\Services\" />
 	  <Folder Include="Control\Models\" />
-	  <Folder Include="Control\ViewModels\" />
 	  <Folder Include="Services\" />
 	  <Folder Include="Settings\Models\" />
 	  <Folder Include="Settings\Services\" />
-	  <Folder Include="Settings\ViewModels\" />
 	</ItemGroup>
 
 	<ItemGroup>

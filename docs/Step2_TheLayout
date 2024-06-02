@@ -64,3 +64,6 @@ If you starting the application, then their will be two main pages instantiate. 
 
 3. Bring live to our first page
 First of all, we just simple structure our layout for the Control page. We just need one simple control we have to create. A control which has a settable Key and Value properties. these are just simple strings.
+
+
+These all steps before, were easy one. In the next step we are going to create some infrastructure for our software architecture.

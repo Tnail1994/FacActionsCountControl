@@ -1,0 +1,11 @@
+## Introduction
+We doing some overkill for the architecture. For this small and simple project, there would be no need to go into that detail. But for learning purposes and this tutorial, I provide some deeper detail in architecture, to scale and structe your software correctly.
+
+## Using MVVM
+
+- We use the CommunityToolkit MVVM Framework to help use immense 
+- For all Views, we have created, we will create a ViewModel and its interface
+- All ViewModels derive from ObservableObject
+
+
+## Using Ioc: Creating our service container
