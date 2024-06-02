@@ -12,7 +12,10 @@
         <toolkit:EventToCommandBehavior Command="{Binding LoadedCommand}" EventName="Loaded" />
     </ContentPage.Behaviors>
 
-    <Grid>
+    <Grid Rotation="{Binding Rotation}">
+        <Grid.GestureRecognizers>
+            <TapGestureRecognizer Command="{Binding NextPlayerCommand}" NumberOfTapsRequired="2" />
+        </Grid.GestureRecognizers>
         <Grid.RowDefinitions>
             <RowDefinition Height="10" />
             <RowDefinition Height="Auto" />
@@ -47,7 +50,7 @@
                 <views:KeyValueView
                     Key="Next"
                     Grid.Column="1"
-                    Value="{Binding Overview.NextValue}" />
+                    Value="{Binding Overview.NextAction}" />
                 <views:KeyValueView
                     Key="Turn"
                     Grid.Column="2"

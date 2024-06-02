@@ -4,7 +4,7 @@ namespace FacActionsCountControl.Control.Models
 {
 	internal interface IOverviewModel
 	{
-		string NextValue { get; set; }
+		string NextAction { get; set; }
 		string PlayerTime { get; set; }
 		string CurrentPlayer { get; set; }
 		int Turn { get; set; }
@@ -12,14 +12,14 @@ namespace FacActionsCountControl.Control.Models
 
 	internal partial class OverviewModel : ObservableObject, IOverviewModel
 	{
-		[ObservableProperty] private string _nextValue, _playerTime, _currentPlayer;
+		[ObservableProperty] private string _nextAction, _playerTime, _currentPlayer;
 		[ObservableProperty] private int _turn;
 
 		public static IOverviewModel Default => new OverviewModel
 		{
-			NextValue = "-",
+			NextAction = "-",
 			PlayerTime = "00:00:00",
-			CurrentPlayer = "Player 1",
+			CurrentPlayer = "-",
 			Turn = 0
 		};
 	}

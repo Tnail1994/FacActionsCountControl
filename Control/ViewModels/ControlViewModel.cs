@@ -7,14 +7,17 @@ namespace FacActionsCountControl.Control.ViewModels
 {
 	internal interface IControlViewModel
 	{
+		int Rotation { get; }
 		IActionsCountModel ActionsCount { get; }
 		IOverviewModel Overview { get; }
 
 		IRelayCommand LoadedCommand { get; }
+		IRelayCommand NextPlayerCommand { get; }
 	}
 
 	internal partial class ControlViewModel : ObservableObject, IControlViewModel
 	{
+		[ObservableProperty] private int _rotation;
 		private readonly IPlayerTimeService _playerTimeService;
 
 		public ControlViewModel(IPlayerTimeService playerTimeService)
@@ -29,7 +32,31 @@ namespace FacActionsCountControl.Control.ViewModels
 		[RelayCommand]
 		public void Loaded()
 		{
+			Overview.CurrentPlayer = "Player 1";
 			StartPlayerTime();
+		}
+
+		[RelayCommand]
+		public void NextPlayer()
+		{
+			SetLayout();
+			SetOverview();
+		}
+
+		private void SetLayout()
+		{
+			Rotation += 180;
+		}
+
+		private void SetOverview()
+		{
+			Overview.CurrentPlayer = Overview.CurrentPlayer == "Player 1" ? "Player 2" : "Player 1";
+			Overview.PlayerTime = _playerTimeService.GetPlayerTime(Overview.CurrentPlayer).ToString();
+			Overview.Turn++;
+
+			if (Overview.Turn % 5 == 0)
+			{
+			}
 		}
 
 		private void StartPlayerTime()
