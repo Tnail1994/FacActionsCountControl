@@ -11,7 +11,7 @@
             <RowDefinition Height="10" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="10" />
-            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
@@ -39,15 +39,22 @@
             </Grid>
         </Border>
 
-
-        <StackLayout Grid.Row="3" Grid.Column="1">
-            <views:KeyValueView Key="Draw" />
-            <views:KeyValueView Key="Summon" />
-            <views:KeyValueView Key="Spell" />
-            <views:KeyValueView Key="Buy" />
-            <views:KeyValueView Key="Attach" />
-            <views:KeyValueView Key="Attack" />
-        </StackLayout>
+        <Border
+            Grid.Row="3"
+            Grid.Column="1"
+            Padding="0,5,0,5"
+            Background="Black"
+            StrokeShape="RoundRectangle 5,5,5,5"
+            StrokeThickness="0.5">
+            <StackLayout Grid.Row="3" Grid.Column="1">
+                <views:KeyValueView Key="Draw" />
+                <views:KeyValueView Key="Summon" />
+                <views:KeyValueView Key="Spell" />
+                <views:KeyValueView Key="Buy" />
+                <views:KeyValueView Key="Attach" />
+                <views:KeyValueView Key="Attack" />
+            </StackLayout>
+        </Border>
 
     </Grid>
 </ContentPage>
