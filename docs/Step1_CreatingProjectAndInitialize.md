@@ -1,0 +1,2 @@
+- Create a repository
+- Create the project inside the located repo
