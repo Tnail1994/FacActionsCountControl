@@ -3,19 +3,20 @@
     x:Class="FacActionsCountControl.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:FacActionsCountControl"
+    xmlns:controlViews="clr-namespace:FacActionsCountControl.Control.Views"
+    xmlns:settingsViews="clr-namespace:FacActionsCountControl.Settings.Views"
     Title="FacActionsCountControl"
     Shell.FlyoutBehavior="Disabled">
 
     <TabBar>
         <ShellContent
             Title="Control"
-            ContentTemplate="{DataTemplate local:MainPage}"
+            ContentTemplate="{DataTemplate controlViews:ControlView}"
             Icon="calendar_week_outline.png"
             Route="Control" />
         <ShellContent
             Title="Settings"
-            ContentTemplate="{DataTemplate local:MainPage}"
+            ContentTemplate="{DataTemplate settingsViews:SettingsView}"
             Icon="calendar_week_outline.png"
             Route="Settings" />
     </TabBar>

@@ -41,4 +41,15 @@ Let's make it first of all easy. We just adding the TabBar with the current main
 
 If you starting the application, then their will be two main pages instantiate. To check this, you can click the button (and the counter inside the text raise) on the "Control"-Page and then switch by clicking to the "Settings"-Tab. There you can see the same page, but without changed text. 
 
-2. 
+2. Creating our own pages
+
+- Delete the main page
+- Add folder structure like following. We use the MVVM pattern 
+![image info](./imgs/folderStructure.png)
+
+- Create ContentPages inside the Views folders
+![image info](./imgs/addContentPage.png)
+
+- Change the AppShell
+    - Adding namespaces for the views
+    - changing DataTemplates of the ShellContent

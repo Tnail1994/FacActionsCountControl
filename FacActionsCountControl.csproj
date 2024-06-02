@@ -62,4 +62,23 @@
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Folder Include="Control\Services\" />
+	  <Folder Include="Control\Models\" />
+	  <Folder Include="Control\ViewModels\" />
+	  <Folder Include="Services\" />
+	  <Folder Include="Settings\Models\" />
+	  <Folder Include="Settings\Services\" />
+	  <Folder Include="Settings\ViewModels\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Update="Control\Views\ControlView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Settings\Views\SettingsView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	</ItemGroup>
+
 </Project>
