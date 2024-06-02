@@ -1,0 +1,9 @@
+Thinking about the layout, should happend in Step 0. But because this is a tutorial, I provide the layout and architecture and the following steps.
+
+Requirements:
+- Need a main page
+    - to start the "game" control
+    - tap on the screen, to switch player and add turn counter
+    - visualise time
+    
+Very simple app design
