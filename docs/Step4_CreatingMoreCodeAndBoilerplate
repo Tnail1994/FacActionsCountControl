@@ -1,0 +1,4 @@
+We need to go on implementing some boiler plate code.
+- need some models (Overview, ActionsCount) to store display data
+- reference and bind them inside the view
+- setting default values

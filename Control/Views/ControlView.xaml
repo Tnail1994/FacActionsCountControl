@@ -3,8 +3,10 @@
     x:Class="FacActionsCountControl.Control.Views.ControlView"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:viewModels="clr-namespace:FacActionsCountControl.Control.ViewModels"
     xmlns:views="clr-namespace:FacActionsCountControl.Control.Views"
-    Title="Control">
+    Title="Control"
+    x:DataType="viewModels:IControlViewModel">
 
     <Grid>
         <Grid.RowDefinitions>
@@ -32,10 +34,24 @@
                     <ColumnDefinition />
                     <ColumnDefinition />
                     <ColumnDefinition />
+                    <ColumnDefinition />
                 </Grid.ColumnDefinitions>
-                <views:KeyValueView Key="Next" />
-                <views:KeyValueView Key="Turn" Grid.Column="1" />
-                <views:KeyValueView Key="Time" Grid.Column="2" />
+                <views:KeyValueView
+                    Key="Current"
+                    Grid.Column="0"
+                    Value="{Binding Overview.CurrentPlayer}" />
+                <views:KeyValueView
+                    Key="Next"
+                    Grid.Column="1"
+                    Value="{Binding Overview.NextValue}" />
+                <views:KeyValueView
+                    Key="Turn"
+                    Grid.Column="2"
+                    Value="{Binding Overview.Turn}" />
+                <views:KeyValueView
+                    Key="Time"
+                    Grid.Column="3"
+                    Value="{Binding Overview.PlayerTime}" />
             </Grid>
         </Border>
 
@@ -46,13 +62,13 @@
             Background="Black"
             StrokeShape="RoundRectangle 5,5,5,5"
             StrokeThickness="0.5">
-            <StackLayout Grid.Row="3" Grid.Column="1">
-                <views:KeyValueView Key="Draw" />
-                <views:KeyValueView Key="Summon" />
-                <views:KeyValueView Key="Spell" />
-                <views:KeyValueView Key="Buy" />
-                <views:KeyValueView Key="Attach" />
-                <views:KeyValueView Key="Attack" />
+            <StackLayout>
+                <views:KeyValueView Key="Draw" Value="{Binding ActionsCount.Draw}" />
+                <views:KeyValueView Key="Summon" Value="{Binding ActionsCount.Summon}" />
+                <views:KeyValueView Key="Spell" Value="{Binding ActionsCount.Spell}" />
+                <views:KeyValueView Key="Buy" Value="{Binding ActionsCount.Buy}" />
+                <views:KeyValueView Key="Attach" Value="{Binding ActionsCount.Attach}" />
+                <views:KeyValueView Key="Attack" Value="{Binding ActionsCount.Attack}" />
             </StackLayout>
         </Border>
 
