@@ -65,7 +65,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Services\" />
 	  <Folder Include="Settings\Models\" />
 	  <Folder Include="Settings\Services\" />
 	</ItemGroup>

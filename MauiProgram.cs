@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Maui;
 using FacActionsCountControl.Control.Services;
 using FacActionsCountControl.Control.ViewModels;
+using FacActionsCountControl.Services;
 using FacActionsCountControl.Settings.ViewModels;
 using Microsoft.Extensions.Logging;
 
@@ -41,6 +42,8 @@ namespace FacActionsCountControl
 		public static MauiAppBuilder RegisterAppServices(this MauiAppBuilder mauiAppBuilder)
 		{
 			mauiAppBuilder.Services.AddSingleton<IPlayerTimeService, PlayerTimeService>();
+			mauiAppBuilder.Services.AddSingleton<IPlayerService, PlayerService>();
+
 
 			return mauiAppBuilder;
 		}

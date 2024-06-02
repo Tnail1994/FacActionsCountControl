@@ -46,7 +46,7 @@
                 <views:KeyValueView
                     Key="Current"
                     Grid.Column="0"
-                    Value="{Binding Overview.CurrentPlayer}" />
+                    Value="{Binding Overview.CurrentPlayerName}" />
                 <views:KeyValueView
                     Key="Next"
                     Grid.Column="1"

@@ -2,6 +2,7 @@
 using CommunityToolkit.Mvvm.Input;
 using FacActionsCountControl.Control.Models;
 using FacActionsCountControl.Control.Services;
+using FacActionsCountControl.Services;
 
 namespace FacActionsCountControl.Control.ViewModels
 {
@@ -19,10 +20,12 @@ namespace FacActionsCountControl.Control.ViewModels
 	{
 		[ObservableProperty] private int _rotation;
 		private readonly IPlayerTimeService _playerTimeService;
+		private readonly IPlayerService _playerService;
 
-		public ControlViewModel(IPlayerTimeService playerTimeService)
+		public ControlViewModel(IPlayerTimeService playerTimeService, IPlayerService playerService)
 		{
 			_playerTimeService = playerTimeService;
+			_playerService = playerService;
 		}
 
 		public IActionsCountModel ActionsCount { get; } = ActionsCountModel.Default;
@@ -32,26 +35,41 @@ namespace FacActionsCountControl.Control.ViewModels
 		[RelayCommand]
 		public void Loaded()
 		{
-			Overview.CurrentPlayer = "Player 1";
+			InitLayout();
+			InitOverview();
+
+			// Dummy, move later to start game command
 			StartPlayerTime();
 		}
 
 		[RelayCommand]
 		public void NextPlayer()
 		{
-			SetLayout();
-			SetOverview();
+			UpdateLayout();
+			UpdateOverview();
 		}
 
-		private void SetLayout()
+
+		private void InitLayout()
+		{
+			Rotation = 0;
+		}
+
+		private void InitOverview()
+		{
+			Overview.CurrentPlayerName = _playerService.GetFirstPlayerName();
+			Overview.Turn = 1;
+		}
+
+		private void UpdateLayout()
 		{
 			Rotation += 180;
 		}
 
-		private void SetOverview()
+		private void UpdateOverview()
 		{
-			Overview.CurrentPlayer = Overview.CurrentPlayer == "Player 1" ? "Player 2" : "Player 1";
-			Overview.PlayerTime = _playerTimeService.GetPlayerTime(Overview.CurrentPlayer).ToString();
+			Overview.CurrentPlayerName = _playerService.GetNextPlayerName(Overview.CurrentPlayerName);
+			Overview.PlayerTime = _playerTimeService.GetPlayerTime(Overview.CurrentPlayerName).ToString();
 			Overview.Turn++;
 
 			if (Overview.Turn % 5 == 0)
@@ -68,7 +86,7 @@ namespace FacActionsCountControl.Control.ViewModels
 
 		private void RaisePlayerTime()
 		{
-			Overview.PlayerTime = _playerTimeService.RaisePlayerTime(Overview.CurrentPlayer).ToString();
+			Overview.PlayerTime = _playerTimeService.RaisePlayerTime(Overview.CurrentPlayerName).ToString();
 		}
 	}
 }
