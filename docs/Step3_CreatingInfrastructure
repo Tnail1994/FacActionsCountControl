@@ -4,8 +4,13 @@ We doing some overkill for the architecture. For this small and simple project, 
 ## Using MVVM
 
 - We use the CommunityToolkit MVVM Framework to help use immense 
-- For all Views, we have created, we will create a ViewModel and its interface
+- For all Views (Control and Settings), we have created, we will create a ViewModel and its interface
 - All ViewModels derive from ObservableObject
 
 
 ## Using Ioc: Creating our service container
+Inside the MauiProgram.cs you can locate the builder for the app. There we registering our types. At the moment only the ViewModels for our Pages (Views).
+
+Learn more about the container here: https://learn.microsoft.com/de-de/dotnet/architecture/maui/dependency-injection    
+
+## Putting all togehter

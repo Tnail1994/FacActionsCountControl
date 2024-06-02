@@ -30,7 +30,7 @@
             <Label
                 Grid.Column="1"
                 HorizontalOptions="End"
-                Text="{Binding Value, FallbackValue=Value}" />
+                Text="{Binding Path=Value, Source={RelativeSource AncestorType={x:Type local:KeyValueView}}}" />
         </Grid>
     </Border>
 

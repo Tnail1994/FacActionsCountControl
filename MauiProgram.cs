@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using FacActionsCountControl.Control.ViewModels;
+using FacActionsCountControl.Settings.ViewModels;
+using Microsoft.Extensions.Logging;
 
 namespace FacActionsCountControl
 {
@@ -19,7 +21,24 @@ namespace FacActionsCountControl
 			builder.Logging.AddDebug();
 #endif
 
+			// https://learn.microsoft.com/de-de/dotnet/architecture/maui/dependency-injection                                                                                    
+			builder.RegisterAppServices();
+			builder.RegisterViewModels();
+
 			return builder.Build();
+		}
+
+		public static MauiAppBuilder RegisterViewModels(this MauiAppBuilder mauiAppBuilder)
+		{
+			mauiAppBuilder.Services.AddSingleton<IControlViewModel, ControlViewModel>();
+			mauiAppBuilder.Services.AddSingleton<ISettingsViewModel, SettingsViewModel>();
+
+			return mauiAppBuilder;
+		}
+
+		public static MauiAppBuilder RegisterAppServices(this MauiAppBuilder mauiAppBuilder)
+		{
+			return mauiAppBuilder;
 		}
 	}
 }
