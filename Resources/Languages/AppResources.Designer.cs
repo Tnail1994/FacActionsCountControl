@@ -61,11 +61,137 @@ namespace FacActionsCountControl.Resources.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Attach.
+        /// </summary>
+        internal static string Attach {
+            get {
+                return ResourceManager.GetString("Attach", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Attack.
+        /// </summary>
+        internal static string Attack {
+            get {
+                return ResourceManager.GetString("Attack", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Buy.
+        /// </summary>
+        internal static string Buy {
+            get {
+                return ResourceManager.GetString("Buy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Current.
+        /// </summary>
+        internal static string ControlCurrent {
+            get {
+                return ResourceManager.GetString("ControlCurrent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Next.
+        /// </summary>
+        internal static string ControlNext {
+            get {
+                return ResourceManager.GetString("ControlNext", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Control.
         /// </summary>
         internal static string ControlPageTitle {
             get {
                 return ResourceManager.GetString("ControlPageTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Time.
+        /// </summary>
+        internal static string ControlTime {
+            get {
+                return ResourceManager.GetString("ControlTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Turn.
+        /// </summary>
+        internal static string ControlTurn {
+            get {
+                return ResourceManager.GetString("ControlTurn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Action needed.
+        /// </summary>
+        internal static string DisplayAlertActionNeeded {
+            get {
+                return ResourceManager.GetString("DisplayAlertActionNeeded", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Do you want to continue?.
+        /// </summary>
+        internal static string DisplayAlertContinueQuestion {
+            get {
+                return ResourceManager.GetString("DisplayAlertContinueQuestion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No.
+        /// </summary>
+        internal static string DisplayAlertNo {
+            get {
+                return ResourceManager.GetString("DisplayAlertNo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Do you want to stop?.
+        /// </summary>
+        internal static string DisplayAlertStopQuestion {
+            get {
+                return ResourceManager.GetString("DisplayAlertStopQuestion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Yes.
+        /// </summary>
+        internal static string DisplayAlertYes {
+            get {
+                return ResourceManager.GetString("DisplayAlertYes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Draw.
+        /// </summary>
+        internal static string Draw {
+            get {
+                return ResourceManager.GetString("Draw", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Currently, no control is running. Tab on screen to start ....
+        /// </summary>
+        internal static string NoControlRunning {
+            get {
+                return ResourceManager.GetString("NoControlRunning", resourceCulture);
             }
         }
         
@@ -93,6 +219,24 @@ namespace FacActionsCountControl.Resources.Languages {
         internal static string SettingsPageTitle {
             get {
                 return ResourceManager.GetString("SettingsPageTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Spell.
+        /// </summary>
+        internal static string Spell {
+            get {
+                return ResourceManager.GetString("Spell", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Summon.
+        /// </summary>
+        internal static string Summon {
+            get {
+                return ResourceManager.GetString("Summon", resourceCulture);
             }
         }
     }

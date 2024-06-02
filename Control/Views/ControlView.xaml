@@ -48,8 +48,8 @@
                 <Grid>
                     <Grid.Resources>
                         <Style TargetType="views:KeyValueView">
-                            <Setter Property="KeyFontSize" Value="22" />
-                            <Setter Property="ValueFontSize" Value="16" />
+                            <Setter Property="KeyFontSize" Value="18" />
+                            <Setter Property="ValueFontSize" Value="13" />
                         </Style>
                     </Grid.Resources>
                     <Grid.ColumnDefinitions>
@@ -61,22 +61,22 @@
                         <RowDefinition />
                     </Grid.RowDefinitions>
                     <views:KeyValueView
-                        Key="Current"
+                        Key="{Binding LocalizationResourceManager[ControlCurrent], Mode=OneWay}"
                         Grid.Row="0"
                         Grid.Column="0"
                         Value="{Binding Overview.CurrentPlayerName}" />
                     <views:KeyValueView
-                        Key="Time"
+                        Key="{Binding LocalizationResourceManager[ControlTime], Mode=OneWay}"
                         Grid.Row="1"
                         Grid.Column="0"
                         Value="{Binding Overview.PlayerTime}" />
                     <views:KeyValueView
-                        Key="Next"
+                        Key="{Binding LocalizationResourceManager[ControlNext], Mode=OneWay}"
                         Grid.Row="1"
                         Grid.Column="1"
                         Value="{Binding Overview.NextAction}" />
                     <views:KeyValueView
-                        Key="Turn"
+                        Key="{Binding LocalizationResourceManager[ControlTurn], Mode=OneWay}"
                         Grid.Row="0"
                         Grid.Column="1"
                         Value="{Binding Overview.Turn}" />
@@ -94,12 +94,12 @@
                             <Setter Property="ValueFontSize" Value="35" />
                         </Style>
                     </StackLayout.Resources>
-                    <views:KeyValueView Key="Draw" Value="{Binding ActionsCount.Draw}" />
-                    <views:KeyValueView Key="Summon" Value="{Binding ActionsCount.Summon}" />
-                    <views:KeyValueView Key="Spell" Value="{Binding ActionsCount.Spell}" />
-                    <views:KeyValueView Key="Buy" Value="{Binding ActionsCount.Buy}" />
-                    <views:KeyValueView Key="Attach" Value="{Binding ActionsCount.Attach}" />
-                    <views:KeyValueView Key="Attack" Value="{Binding ActionsCount.Attack}" />
+                    <views:KeyValueView Key="{Binding LocalizationResourceManager[Draw], Mode=OneWay}" Value="{Binding ActionsCount.Draw}" />
+                    <views:KeyValueView Key="{Binding LocalizationResourceManager[Summon], Mode=OneWay}" Value="{Binding ActionsCount.Summon}" />
+                    <views:KeyValueView Key="{Binding LocalizationResourceManager[Spell], Mode=OneWay}" Value="{Binding ActionsCount.Spell}" />
+                    <views:KeyValueView Key="{Binding LocalizationResourceManager[Buy], Mode=OneWay}" Value="{Binding ActionsCount.Buy}" />
+                    <views:KeyValueView Key="{Binding LocalizationResourceManager[Attach], Mode=OneWay}" Value="{Binding ActionsCount.Attach}" />
+                    <views:KeyValueView Key="{Binding LocalizationResourceManager[Attack], Mode=OneWay}" Value="{Binding ActionsCount.Attack}" />
                 </StackLayout>
             </Border>
 
@@ -143,7 +143,7 @@
                 FontAttributes="Bold, Italic"
                 FontSize="41"
                 HorizontalTextAlignment="Center"
-                Text="Currently, no control is running. Tab on screen to start ..."
+                Text="{Binding LocalizationResourceManager[NoControlRunning], Mode=OneWay}"
                 TextColor="{StaticResource SecondaryText}"
                 VerticalTextAlignment="Center" />
         </Grid>

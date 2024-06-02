@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using System.ComponentModel;
+using System.Diagnostics;
 using System.Threading.Channels;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
@@ -51,6 +52,8 @@ namespace FacActionsCountControl.Control.ViewModels
 				_timer.Interval = TimeSpan.FromSeconds(1);
 				_timer.Tick += (s, e) => RaisePlayerTime();
 			}
+
+			LocalizationResourceManager.PropertyChanged += OnLanguageChanged;
 		}
 
 		public LocalizationResourceManager LocalizationResourceManager => LocalizationResourceManager.Instance;
@@ -64,8 +67,11 @@ namespace FacActionsCountControl.Control.ViewModels
 			if (_init && !OverlayIsVisible)
 			{
 				bool answer =
-					await Application.Current.MainPage.DisplayAlert("Action needed", "Do you want to continue?", "Yes",
-						"No");
+					await Application.Current.MainPage.DisplayAlert(
+						LocalizationResourceManager["DisplayAlertActionNeeded"].ToString(),
+						LocalizationResourceManager["DisplayAlertContinueQuestion"].ToString(),
+						LocalizationResourceManager["DisplayAlertYes"].ToString(),
+						LocalizationResourceManager["DisplayAlertNo"].ToString());
 
 				if (answer)
 				{
@@ -104,8 +110,12 @@ namespace FacActionsCountControl.Control.ViewModels
 		public async void Stop()
 		{
 			bool answer =
-				await Application.Current.MainPage.DisplayAlert("Action needed", "Do you want to stop?", "Yes",
-					"No");
+				await Application.Current.MainPage.DisplayAlert(
+					LocalizationResourceManager["DisplayAlertActionNeeded"].ToString(),
+					LocalizationResourceManager["DisplayAlertStopQuestion"].ToString(),
+					LocalizationResourceManager["DisplayAlertYes"].ToString(),
+					LocalizationResourceManager["DisplayAlertNo"].ToString()
+				);
 
 			if (!answer)
 				return;
@@ -149,7 +159,7 @@ namespace FacActionsCountControl.Control.ViewModels
 			Overview.CurrentPlayerName = _playerService.GetFirstPlayerName();
 			Overview.Turn = 1;
 			Overview.PlayerTime = _timeService.ResetTime().ToString();
-			Overview.NextAction = _actionsCountService.GetNextAction().ToString();
+			SetOverViewNextAction();
 
 			var defaultActionsCount = ActionsCountModel.Default;
 
@@ -207,8 +217,21 @@ namespace FacActionsCountControl.Control.ViewModels
 						break;
 				}
 
-				Overview.NextAction = _actionsCountService.GetNextAction().ToString();
+				_actionsCountService.GetNextAction();
+				SetOverViewNextAction();
 			}
+		}
+
+		private void SetOverViewNextAction()
+		{
+			var actionKey = _actionsCountService.GetCurrentAction().ToString();
+			Overview.NextAction = LocalizationResourceManager[actionKey].ToString();
+		}
+
+
+		private void OnLanguageChanged(object? sender, PropertyChangedEventArgs e)
+		{
+			SetOverViewNextAction();
 		}
 	}
 }

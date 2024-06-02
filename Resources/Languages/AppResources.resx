@@ -117,8 +117,50 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Attach" xml:space="preserve">
+    <value>Attach</value>
+  </data>
+  <data name="Attack" xml:space="preserve">
+    <value>Attack</value>
+  </data>
+  <data name="Buy" xml:space="preserve">
+    <value>Buy</value>
+  </data>
+  <data name="ControlCurrent" xml:space="preserve">
+    <value>Current</value>
+  </data>
+  <data name="ControlNext" xml:space="preserve">
+    <value>Next</value>
+  </data>
   <data name="ControlPageTitle" xml:space="preserve">
     <value>Control</value>
+  </data>
+  <data name="ControlTime" xml:space="preserve">
+    <value>Time</value>
+  </data>
+  <data name="ControlTurn" xml:space="preserve">
+    <value>Turn</value>
+  </data>
+  <data name="DisplayAlertActionNeeded" xml:space="preserve">
+    <value>Action needed</value>
+  </data>
+  <data name="DisplayAlertContinueQuestion" xml:space="preserve">
+    <value>Do you want to continue?</value>
+  </data>
+  <data name="DisplayAlertNo" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="DisplayAlertStopQuestion" xml:space="preserve">
+    <value>Do you want to stop?</value>
+  </data>
+  <data name="DisplayAlertYes" xml:space="preserve">
+    <value>Yes</value>
+  </data>
+  <data name="Draw" xml:space="preserve">
+    <value>Draw</value>
+  </data>
+  <data name="NoControlRunning" xml:space="preserve">
+    <value>Currently, no control is running. Tab on screen to start ...</value>
   </data>
   <data name="SettingLanguageKey" xml:space="preserve">
     <value>Language</value>
@@ -128,5 +170,11 @@
   </data>
   <data name="SettingsPageTitle" xml:space="preserve">
     <value>Settings</value>
+  </data>
+  <data name="Spell" xml:space="preserve">
+    <value>Spell</value>
+  </data>
+  <data name="Summon" xml:space="preserve">
+    <value>Summon</value>
   </data>
 </root>

@@ -5,6 +5,9 @@
 		public AppShell()
 		{
 			InitializeComponent();
+			BindingContext = this;
 		}
+
+		public LocalizationResourceManager LocalizationResourceManager => LocalizationResourceManager.Instance;
 	}
 }

@@ -117,8 +117,50 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Attach" xml:space="preserve">
+    <value>Ausrüsten</value>
+  </data>
+  <data name="Attack" xml:space="preserve">
+    <value>Angreifen</value>
+  </data>
+  <data name="Buy" xml:space="preserve">
+    <value>Kaufen</value>
+  </data>
+  <data name="ControlCurrent" xml:space="preserve">
+    <value>Aktuell</value>
+  </data>
+  <data name="ControlNext" xml:space="preserve">
+    <value>Nächstes</value>
+  </data>
   <data name="ControlPageTitle" xml:space="preserve">
     <value>Kontrolle</value>
+  </data>
+  <data name="ControlTime" xml:space="preserve">
+    <value>Zeit</value>
+  </data>
+  <data name="ControlTurn" xml:space="preserve">
+    <value>Zug</value>
+  </data>
+  <data name="DisplayAlertActionNeeded" xml:space="preserve">
+    <value>Aktion nötig</value>
+  </data>
+  <data name="DisplayAlertContinueQuestion" xml:space="preserve">
+    <value>Möchtest du fortsetzen?</value>
+  </data>
+  <data name="DisplayAlertNo" xml:space="preserve">
+    <value>Nein</value>
+  </data>
+  <data name="DisplayAlertStopQuestion" xml:space="preserve">
+    <value>Möchtest du stoppen?</value>
+  </data>
+  <data name="DisplayAlertYes" xml:space="preserve">
+    <value>Ja</value>
+  </data>
+  <data name="Draw" xml:space="preserve">
+    <value>Ziehen</value>
+  </data>
+  <data name="NoControlRunning" xml:space="preserve">
+    <value>Aktuell ist alles gestoppt. Um zu starten auf den Bildschirm drücken ...</value>
   </data>
   <data name="SettingLanguageKey" xml:space="preserve">
     <value>Sprache</value>
@@ -128,5 +170,11 @@
   </data>
   <data name="SettingsPageTitle" xml:space="preserve">
     <value>Einstellungen</value>
+  </data>
+  <data name="Spell" xml:space="preserve">
+    <value>Zaubern</value>
+  </data>
+  <data name="Summon" xml:space="preserve">
+    <value>Beschwören</value>
   </data>
 </root>

@@ -15,12 +15,12 @@
 
     <TabBar>
         <ShellContent
-            Title="Control"
+            Title="{Binding LocalizationResourceManager[ControlPageTitle], Mode=OneWay}"
             ContentTemplate="{DataTemplate controlViews:ControlView}"
             Icon="calendar_week_outline.png"
             Route="Control" />
         <ShellContent
-            Title="Settings"
+            Title="{Binding LocalizationResourceManager[SettingsPageTitle], Mode=OneWay}"
             ContentTemplate="{DataTemplate settingsViews:SettingsView}"
             Icon="calendar_week_outline.png"
             Route="Settings" />
