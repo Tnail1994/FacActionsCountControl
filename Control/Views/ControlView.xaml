@@ -142,6 +142,7 @@
                 FontSize="41"
                 HorizontalTextAlignment="Center"
                 Text="Currently, no control is running. Tab on screen to start ..."
+                TextColor="{StaticResource SecondaryText}"
                 VerticalTextAlignment="Center" />
         </Grid>
 

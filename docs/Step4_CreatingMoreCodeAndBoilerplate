@@ -27,3 +27,9 @@ Next we have to create some logic like:
 - overlay for paused / stopped state, means showing the user that currently nothing running
 - adding color palette in Colors.xaml
 - go deeper into the timer implementation and start, stop, resume
+- control bar with image buttons, simple controlling of the game
+
+## Do the last logic things for that app
+- facing requirement that action count raises after 5 turns
+- facing requirement that every action must raise by once first, after reraising
+- adding new ActionsCountService

@@ -32,14 +32,17 @@ namespace FacActionsCountControl.Control.ViewModels
 
 		private readonly ITimeService _timeService;
 		private readonly IPlayerService _playerService;
+		private readonly IActionsCountService _actionsCountService;
 
 		private readonly IDispatcherTimer _timer;
 		private bool _init;
 
-		public ControlViewModel(ITimeService timeService, IPlayerService playerService)
+		public ControlViewModel(ITimeService timeService, IPlayerService playerService,
+			IActionsCountService actionsCountService)
 		{
 			_timeService = timeService;
 			_playerService = playerService;
+			_actionsCountService = actionsCountService;
 
 			if (Application.Current != null)
 			{
@@ -49,8 +52,8 @@ namespace FacActionsCountControl.Control.ViewModels
 			}
 		}
 
-		public IActionsCountModel ActionsCount { get; } = ActionsCountModel.Default;
-		public IOverviewModel Overview { get; } = OverviewModel.Default;
+		public IActionsCountModel ActionsCount { get; private set; } = ActionsCountModel.Default;
+		public IOverviewModel Overview { get; private set; } = OverviewModel.Default;
 
 
 		[RelayCommand]
@@ -96,8 +99,15 @@ namespace FacActionsCountControl.Control.ViewModels
 		}
 
 		[RelayCommand]
-		public void Stop()
+		public async void Stop()
 		{
+			bool answer =
+				await Application.Current.MainPage.DisplayAlert("Action needed", "Do you want to stop?", "Yes",
+					"No");
+
+			if (!answer)
+				return;
+
 			Init();
 		}
 
@@ -132,9 +142,21 @@ namespace FacActionsCountControl.Control.ViewModels
 			if (_timer.IsRunning)
 				StopTimer();
 
+			_actionsCountService.Reset();
+
 			Overview.CurrentPlayerName = _playerService.GetFirstPlayerName();
 			Overview.Turn = 1;
 			Overview.PlayerTime = _timeService.ResetTime().ToString();
+			Overview.NextAction = _actionsCountService.GetNextAction().ToString();
+
+			var defaultActionsCount = ActionsCountModel.Default;
+
+			ActionsCount.Draw = defaultActionsCount.Draw;
+			ActionsCount.Summon = defaultActionsCount.Summon;
+			ActionsCount.Spell = defaultActionsCount.Spell;
+			ActionsCount.Buy = defaultActionsCount.Buy;
+			ActionsCount.Attach = defaultActionsCount.Attach;
+			ActionsCount.Attack = defaultActionsCount.Attack;
 		}
 
 		private void StartTimer()
@@ -161,6 +183,29 @@ namespace FacActionsCountControl.Control.ViewModels
 
 			if (Overview.Turn % 5 == 0)
 			{
+				switch (_actionsCountService.GetCurrentAction())
+				{
+					case ActionsCountType.Draw:
+						ActionsCount.Draw++;
+						break;
+					case ActionsCountType.Summon:
+						ActionsCount.Summon++;
+						break;
+					case ActionsCountType.Spell:
+						ActionsCount.Spell++;
+						break;
+					case ActionsCountType.Buy:
+						ActionsCount.Buy++;
+						break;
+					case ActionsCountType.Attack:
+						ActionsCount.Attack++;
+						break;
+					case ActionsCountType.Attach:
+						ActionsCount.Attach++;
+						break;
+				}
+
+				Overview.NextAction = _actionsCountService.GetNextAction().ToString();
 			}
 		}
 	}

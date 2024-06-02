@@ -43,7 +43,7 @@ namespace FacActionsCountControl
 		{
 			mauiAppBuilder.Services.AddSingleton<ITimeService, TimeService>();
 			mauiAppBuilder.Services.AddSingleton<IPlayerService, PlayerService>();
-
+			mauiAppBuilder.Services.AddSingleton<IActionsCountService, ActionsCountService>();
 
 			return mauiAppBuilder;
 		}
