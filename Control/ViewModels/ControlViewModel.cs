@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics;
+using System.Threading.Channels;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using FacActionsCountControl.Control.Models;
@@ -14,20 +15,26 @@ namespace FacActionsCountControl.Control.ViewModels
 		IActionsCountModel ActionsCount { get; }
 		IOverviewModel Overview { get; }
 
+		ImageSource PauseResumeImageSource { get; }
 		IRelayCommand LoadedCommand { get; }
+		IRelayCommand UnloadedCommand { get; }
 		IRelayCommand NextPlayerCommand { get; }
 		IRelayCommand StartControlCommand { get; }
+		IRelayCommand PauseResumeCommand { get; }
+		IRelayCommand StopCommand { get; }
 	}
 
 	internal partial class ControlViewModel : ObservableObject, IControlViewModel
 	{
 		[ObservableProperty] private int _rotation;
 		[ObservableProperty] private bool _overlayIsVisible;
+		[ObservableProperty] private ImageSource _pauseResumeImageSource;
 
 		private readonly ITimeService _timeService;
 		private readonly IPlayerService _playerService;
 
 		private readonly IDispatcherTimer _timer;
+		private bool _init;
 
 		public ControlViewModel(ITimeService timeService, IPlayerService playerService)
 		{
@@ -47,10 +54,57 @@ namespace FacActionsCountControl.Control.ViewModels
 
 
 		[RelayCommand]
-		public void Loaded()
+		public async void Loaded()
+		{
+			if (_init && !OverlayIsVisible)
+			{
+				bool answer =
+					await Application.Current.MainPage.DisplayAlert("Action needed", "Do you want to continue?", "Yes",
+						"No");
+
+				if (answer)
+				{
+					StartTimer();
+					return;
+				}
+			}
+
+			Init();
+		}
+
+		private void Init()
 		{
 			InitLayout();
 			InitOverview();
+
+			_init = true;
+		}
+
+		[RelayCommand]
+		public void Unloaded()
+		{
+			StopTimer();
+		}
+
+		[RelayCommand]
+		public void PauseResume()
+		{
+			if (_timer.IsRunning)
+				StopTimer();
+			else
+				StartTimer();
+		}
+
+		[RelayCommand]
+		public void Stop()
+		{
+			Init();
+		}
+
+		private void StopTimer()
+		{
+			_timer.Stop();
+			PauseResumeImageSource = "play.png";
 		}
 
 		[RelayCommand]
@@ -64,7 +118,7 @@ namespace FacActionsCountControl.Control.ViewModels
 		public void StartControl()
 		{
 			OverlayIsVisible = false;
-			StartPlayerTime();
+			StartTimer();
 		}
 
 		private void InitLayout()
@@ -75,13 +129,18 @@ namespace FacActionsCountControl.Control.ViewModels
 
 		private void InitOverview()
 		{
+			if (_timer.IsRunning)
+				StopTimer();
+
 			Overview.CurrentPlayerName = _playerService.GetFirstPlayerName();
 			Overview.Turn = 1;
+			Overview.PlayerTime = _timeService.ResetTime().ToString();
 		}
 
-		private void StartPlayerTime()
+		private void StartTimer()
 		{
 			_timer.Start();
+			PauseResumeImageSource = "pause.png";
 		}
 
 		private void RaisePlayerTime()

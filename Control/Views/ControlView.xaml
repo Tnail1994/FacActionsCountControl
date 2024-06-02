@@ -8,10 +8,10 @@
     xmlns:views="clr-namespace:FacActionsCountControl.Control.Views"
     Title="Control"
     x:DataType="viewModels:IControlViewModel"
-    Background="{StaticResource SecondaryBackground}"
-    >
+    Background="{StaticResource SecondaryBackground}">
     <ContentPage.Behaviors>
         <toolkit:EventToCommandBehavior Command="{Binding LoadedCommand}" EventName="Loaded" />
+        <toolkit:EventToCommandBehavior Command="{Binding UnloadedCommand}" EventName="Unloaded" />
     </ContentPage.Behaviors>
     <Grid>
         <Grid.Resources>
@@ -113,12 +113,12 @@
                             <Setter Property="HeightRequest" Value="60" />
                         </Style>
                     </StackLayout.Resources>
-                    <ImageButton Source="pause.png">
+                    <ImageButton Command="{Binding PauseResumeCommand}" Source="{Binding PauseResumeImageSource}">
                         <ImageButton.Behaviors>
                             <toolkit:IconTintColorBehavior TintColor="{StaticResource AccentInteraction}" />
                         </ImageButton.Behaviors>
                     </ImageButton>
-                    <ImageButton Source="stop.png">
+                    <ImageButton Command="{Binding StopCommand}" Source="stop.png">
                         <ImageButton.Behaviors>
                             <toolkit:IconTintColorBehavior TintColor="{StaticResource AccentInteraction}" />
                         </ImageButton.Behaviors>
@@ -129,16 +129,17 @@
         </Grid>
 
         <Grid
-            Background="Red"
+            Background="{StaticResource Accent1}"
             IsVisible="{Binding OverlayIsVisible}"
-            Opacity="0.8">
+            Opacity="0.87">
             <Grid.GestureRecognizers>
                 <TapGestureRecognizer Command="{Binding StartControlCommand}" NumberOfTapsRequired="1" />
             </Grid.GestureRecognizers>
 
             <Label
                 Margin="25"
-                FontSize="65"
+                FontAttributes="Bold, Italic"
+                FontSize="41"
                 HorizontalTextAlignment="Center"
                 Text="Currently, no control is running. Tab on screen to start ..."
                 VerticalTextAlignment="Center" />

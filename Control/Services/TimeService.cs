@@ -4,6 +4,7 @@
 	{
 		TimeSpan GetTime();
 		TimeSpan RaisePlayerTime();
+		TimeSpan ResetTime();
 	}
 
 	internal class TimeService : ITimeService
@@ -14,6 +15,12 @@
 		public TimeSpan RaisePlayerTime()
 		{
 			_currentTime += TimeSpan.FromSeconds(1);
+			return _currentTime;
+		}
+
+		public TimeSpan ResetTime()
+		{
+			_currentTime = TimeSpan.FromSeconds(0);
 			return _currentTime;
 		}
 	}
