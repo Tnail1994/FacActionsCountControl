@@ -1,4 +1,5 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿using System.Diagnostics;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using FacActionsCountControl.Control.Models;
 using FacActionsCountControl.Control.Services;
@@ -26,10 +27,19 @@ namespace FacActionsCountControl.Control.ViewModels
 		private readonly ITimeService _timeService;
 		private readonly IPlayerService _playerService;
 
+		private readonly IDispatcherTimer _timer;
+
 		public ControlViewModel(ITimeService timeService, IPlayerService playerService)
 		{
 			_timeService = timeService;
 			_playerService = playerService;
+
+			if (Application.Current != null)
+			{
+				_timer = Application.Current.Dispatcher.CreateTimer();
+				_timer.Interval = TimeSpan.FromSeconds(1);
+				_timer.Tick += (s, e) => RaisePlayerTime();
+			}
 		}
 
 		public IActionsCountModel ActionsCount { get; } = ActionsCountModel.Default;
@@ -71,9 +81,7 @@ namespace FacActionsCountControl.Control.ViewModels
 
 		private void StartPlayerTime()
 		{
-			var timer = new System.Threading.Timer(obj => { RaisePlayerTime(); }, null,
-				TimeSpan.FromSeconds(1),
-				TimeSpan.FromSeconds(1));
+			_timer.Start();
 		}
 
 		private void RaisePlayerTime()
