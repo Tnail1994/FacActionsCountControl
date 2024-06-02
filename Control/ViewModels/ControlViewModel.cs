@@ -10,6 +10,7 @@ namespace FacActionsCountControl.Control.ViewModels
 {
 	internal interface IControlViewModel
 	{
+		LocalizationResourceManager LocalizationResourceManager { get; }
 		int Rotation { get; }
 		bool OverlayIsVisible { get; }
 		IActionsCountModel ActionsCount { get; }
@@ -52,6 +53,7 @@ namespace FacActionsCountControl.Control.ViewModels
 			}
 		}
 
+		public LocalizationResourceManager LocalizationResourceManager => LocalizationResourceManager.Instance;
 		public IActionsCountModel ActionsCount { get; private set; } = ActionsCountModel.Default;
 		public IOverviewModel Overview { get; private set; } = OverviewModel.Default;
 
