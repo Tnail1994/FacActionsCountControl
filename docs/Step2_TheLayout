@@ -3,7 +3,42 @@ Thinking about the layout, should happend in Step 0. But because this is a tutor
 Requirements:
 - Need a main page
     - to start the "game" control
-    - tap on the screen, to switch player and add turn counter
+    - tap on the screen, to switch player and add turn counter. this also swaps the screen, that current player can see values
     - visualise time
+- need a settings page
+    - only change language
+    - and provide "tutorial" -> Info just to tap on the screen to start and swap
     
-Very simple app design
+Very simple app design. We use a tab menu for the shell.
+
+1. Creating the tab menu inside the AppShell.xaml
+
+Let's make it first of all easy. We just adding the TabBar with the current main page.
+
+
+**Title**: The name of the tab
+
+**ContentTemplate**: How the page looks like
+
+**Icon**: The icon of the tab
+
+**Route**: To navigate to the page by code
+
+```
+ <TabBar>
+     <ShellContent
+         Title="Control"
+         ContentTemplate="{DataTemplate local:MainPage}"
+         Icon="calendar_week_outline.png"
+         Route="Control" />
+     <ShellContent
+         Title="Settings"
+         ContentTemplate="{DataTemplate local:MainPage}"
+         Icon="calendar_week_outline.png"
+         Route="Settings" />
+ </TabBar>
+```
+
+If you starting the application, then their will be two main pages instantiate. To check this, you can click the button (and the counter inside the text raise) on the "Control"-Page and then switch by clicking to the "Settings"-Tab. There you can see the same page, but without changed text. 
+
+2. 

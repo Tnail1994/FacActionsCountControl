@@ -4,12 +4,19 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:FacActionsCountControl"
-    Shell.FlyoutBehavior="Disabled"
-    Title="FacActionsCountControl">
+    Title="FacActionsCountControl"
+    Shell.FlyoutBehavior="Disabled">
 
-    <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
-
+    <TabBar>
+        <ShellContent
+            Title="Control"
+            ContentTemplate="{DataTemplate local:MainPage}"
+            Icon="calendar_week_outline.png"
+            Route="Control" />
+        <ShellContent
+            Title="Settings"
+            ContentTemplate="{DataTemplate local:MainPage}"
+            Icon="calendar_week_outline.png"
+            Route="Settings" />
+    </TabBar>
 </Shell>
