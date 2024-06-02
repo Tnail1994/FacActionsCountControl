@@ -12,3 +12,8 @@ Next we have to create some logic like:
 - and then the app specific logic:
     - after 5 turns, the next action count raise occurs and a new one will be determined
     - new determinate rule: all actions count must have risen be once, then we can start a new raising round
+
+
+## Add a timer
+- new service adding to the container IPlayerTimeService, which handles logic for the player and safe the time
+- open: swaping the current player time and ask player time service 
