@@ -13,9 +13,10 @@
             <Setter Property="VerticalOptions" Value="Center" />
             <Setter Property="VerticalTextAlignment" Value="Center" />
             <Setter Property="Margin" Value="5,1,5,3" />
+            <Setter Property="TextColor" Value="{StaticResource PrimaryText}" />
         </Style>
     </ContentView.Resources>
-    <Border Background="Gray" StrokeShape="RoundRectangle 10">
+    <Border Background="{StaticResource PrimaryBackground}" StrokeShape="RoundRectangle 10">
         <Grid Margin="2.5">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition />

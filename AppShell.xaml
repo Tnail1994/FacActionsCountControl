@@ -6,7 +6,12 @@
     xmlns:controlViews="clr-namespace:FacActionsCountControl.Control.Views"
     xmlns:settingsViews="clr-namespace:FacActionsCountControl.Settings.Views"
     Title="FacActionsCountControl"
-    Shell.FlyoutBehavior="Disabled">
+    Shell.BackgroundColor="{StaticResource PrimaryBackground}"
+    Shell.FlyoutBehavior="Disabled"
+    Shell.TabBarBackgroundColor="{StaticResource PrimaryBackground}"
+    Shell.TabBarTitleColor="{StaticResource PrimaryText}"
+    Shell.TabBarUnselectedColor="{StaticResource SecondaryText}"
+    Shell.TitleColor="{StaticResource SecondaryText}">
 
     <TabBar>
         <ShellContent
