@@ -24,4 +24,22 @@ public partial class KeyValueView : ContentView
 		get => (string)GetValue(ValueProperty);
 		set => SetValue(ValueProperty, value);
 	}
+
+	public static readonly BindableProperty ValueFontSizeProperty =
+		BindableProperty.Create(nameof(ValueFontSize), typeof(int), typeof(KeyValueView), 28);
+
+	public int ValueFontSize
+	{
+		get => (int)GetValue(ValueFontSizeProperty);
+		set => SetValue(ValueFontSizeProperty, value);
+	}
+
+	public static readonly BindableProperty KeyFontSizeProperty =
+		BindableProperty.Create(nameof(KeyFontSize), typeof(int), typeof(KeyValueView), 14);
+
+	public int KeyFontSize
+	{
+		get => (int)GetValue(KeyFontSizeProperty);
+		set => SetValue(KeyFontSizeProperty, value);
+	}
 }

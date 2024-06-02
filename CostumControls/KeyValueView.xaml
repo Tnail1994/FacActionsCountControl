@@ -9,7 +9,7 @@
 
     <ContentView.Resources>
         <Style TargetType="Label">
-            <Setter Property="FontSize" Value="32" />
+            <!--<Setter Property="FontAutoScalingEnabled" Value="True" />-->
             <Setter Property="VerticalOptions" Value="Center" />
             <Setter Property="VerticalTextAlignment" Value="Center" />
             <Setter Property="Margin" Value="5,1,5,3" />
@@ -24,11 +24,15 @@
 
             <Label
                 Grid.Column="0"
+                FontAttributes="Italic"
+                FontSize="{Binding Path=KeyFontSize, Source={RelativeSource AncestorType={x:Type local:KeyValueView}}}"
                 HorizontalOptions="Start"
                 Text="{Binding Path=Key, Source={RelativeSource AncestorType={x:Type local:KeyValueView}}}" />
 
             <Label
                 Grid.Column="1"
+                FontAttributes="Bold"
+                FontSize="{Binding Path=ValueFontSize, Source={RelativeSource AncestorType={x:Type local:KeyValueView}}}"
                 HorizontalOptions="End"
                 Text="{Binding Path=Value, Source={RelativeSource AncestorType={x:Type local:KeyValueView}}}" />
         </Grid>

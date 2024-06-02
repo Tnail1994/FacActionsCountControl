@@ -11,7 +11,6 @@
     <ContentPage.Behaviors>
         <toolkit:EventToCommandBehavior Command="{Binding LoadedCommand}" EventName="Loaded" />
     </ContentPage.Behaviors>
-
     <Grid>
         <Grid Rotation="{Binding Rotation}">
             <Grid.GestureRecognizers>
@@ -40,28 +39,40 @@
                 StrokeShape="RoundRectangle 5,5,5,5"
                 StrokeThickness="0.5">
                 <Grid>
+                    <Grid.Resources>
+                        <Style TargetType="views:KeyValueView">
+                            <Setter Property="KeyFontSize" Value="22" />
+                            <Setter Property="ValueFontSize" Value="16" />
+                        </Style>
+                    </Grid.Resources>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition />
                         <ColumnDefinition />
-                        <ColumnDefinition />
-                        <ColumnDefinition />
                     </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
                     <views:KeyValueView
                         Key="Current"
+                        Grid.Row="0"
                         Grid.Column="0"
                         Value="{Binding Overview.CurrentPlayerName}" />
                     <views:KeyValueView
+                        Key="Time"
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        Value="{Binding Overview.PlayerTime}" />
+                    <views:KeyValueView
                         Key="Next"
+                        Grid.Row="1"
                         Grid.Column="1"
                         Value="{Binding Overview.NextAction}" />
                     <views:KeyValueView
                         Key="Turn"
-                        Grid.Column="2"
+                        Grid.Row="0"
+                        Grid.Column="1"
                         Value="{Binding Overview.Turn}" />
-                    <views:KeyValueView
-                        Key="Time"
-                        Grid.Column="3"
-                        Value="{Binding Overview.PlayerTime}" />
                 </Grid>
             </Border>
 
@@ -73,6 +84,12 @@
                 StrokeShape="RoundRectangle 5,5,5,5"
                 StrokeThickness="0.5">
                 <StackLayout>
+                    <StackLayout.Resources>
+                        <Style TargetType="views:KeyValueView">
+                            <Setter Property="KeyFontSize" Value="31" />
+                            <Setter Property="ValueFontSize" Value="35" />
+                        </Style>
+                    </StackLayout.Resources>
                     <views:KeyValueView Key="Draw" Value="{Binding ActionsCount.Draw}" />
                     <views:KeyValueView Key="Summon" Value="{Binding ActionsCount.Summon}" />
                     <views:KeyValueView Key="Spell" Value="{Binding ActionsCount.Spell}" />
