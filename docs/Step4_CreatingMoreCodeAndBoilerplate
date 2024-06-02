@@ -2,3 +2,13 @@ We need to go on implementing some boiler plate code.
 - need some models (Overview, ActionsCount) to store display data
 - reference and bind them inside the view
 - setting default values
+
+Next we have to create some logic like:
+- timer 
+- swap screen (and change overview values correctly)
+- control bar at the bottom to start, pause and stop current control
+- when stopped or paused, then in the middle of the screen should be a message "tap to start / resume"
+- also language support 
+- and then the app specific logic:
+    - after 5 turns, the next action count raise occurs and a new one will be determined
+    - new determinate rule: all actions count must have risen be once, then we can start a new raising round
