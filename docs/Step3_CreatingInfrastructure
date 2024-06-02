@@ -14,3 +14,5 @@ Inside the MauiProgram.cs you can locate the builder for the app. There we regis
 Learn more about the container here: https://learn.microsoft.com/de-de/dotnet/architecture/maui/dependency-injection    
 
 ## Putting all togehter
+Now we have to bind our ViewModels inside our container to our views. 
+We locate the .xaml.cs from the View. And add inside the constructor the BindingContext to the suitable ViewModel.
