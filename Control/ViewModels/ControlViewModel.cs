@@ -23,12 +23,12 @@ namespace FacActionsCountControl.Control.ViewModels
 		[ObservableProperty] private int _rotation;
 		[ObservableProperty] private bool _overlayIsVisible;
 
-		private readonly IPlayerTimeService _playerTimeService;
+		private readonly ITimeService _timeService;
 		private readonly IPlayerService _playerService;
 
-		public ControlViewModel(IPlayerTimeService playerTimeService, IPlayerService playerService)
+		public ControlViewModel(ITimeService timeService, IPlayerService playerService)
 		{
-			_playerTimeService = playerTimeService;
+			_timeService = timeService;
 			_playerService = playerService;
 		}
 
@@ -78,7 +78,7 @@ namespace FacActionsCountControl.Control.ViewModels
 
 		private void RaisePlayerTime()
 		{
-			Overview.PlayerTime = _playerTimeService.RaisePlayerTime(Overview.CurrentPlayerName).ToString();
+			Overview.PlayerTime = _timeService.RaisePlayerTime().ToString();
 		}
 
 		private void UpdateLayout()
@@ -89,7 +89,7 @@ namespace FacActionsCountControl.Control.ViewModels
 		private void UpdateOverview()
 		{
 			Overview.CurrentPlayerName = _playerService.GetNextPlayerName(Overview.CurrentPlayerName);
-			Overview.PlayerTime = _playerTimeService.GetPlayerTime(Overview.CurrentPlayerName).ToString();
+			Overview.PlayerTime = _timeService.GetTime().ToString();
 			Overview.Turn++;
 
 			if (Overview.Turn % 5 == 0)

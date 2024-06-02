@@ -41,7 +41,7 @@ namespace FacActionsCountControl
 
 		public static MauiAppBuilder RegisterAppServices(this MauiAppBuilder mauiAppBuilder)
 		{
-			mauiAppBuilder.Services.AddSingleton<IPlayerTimeService, PlayerTimeService>();
+			mauiAppBuilder.Services.AddSingleton<ITimeService, TimeService>();
 			mauiAppBuilder.Services.AddSingleton<IPlayerService, PlayerService>();
 
 
