@@ -27,5 +27,10 @@ namespace FacActionsCountControl
 			AppResources.Culture = culture;
 			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(null));
 		}
+
+		public CultureInfo GetCurrentCultureInfo()
+		{
+			return AppResources.Culture;
+		}
 	}
 }

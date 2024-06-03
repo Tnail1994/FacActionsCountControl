@@ -20,6 +20,7 @@ namespace FacActionsCountControl.Settings.ViewModels
 		public SettingsViewModel()
 		{
 			PropertyChanged += OnPropertyChanged;
+			CurrentLanguage = MapToLanguage(LocalizationResourceManager.GetCurrentCultureInfo());
 		}
 
 		private void OnPropertyChanged(object? sender, PropertyChangedEventArgs e)
@@ -39,6 +40,18 @@ namespace FacActionsCountControl.Settings.ViewModels
 				_ => CultureInfo.CurrentCulture
 			};
 		}
+
+		// Create me the opposite of the method above MapToCultureInfo
+		private string MapToLanguage(CultureInfo currentCultureInfo)
+		{
+			return currentCultureInfo switch
+			{
+				CultureInfo { Name: "de-DE" } => "Deutsch",
+				CultureInfo { Name: "en-US" } => "English",
+				_ => "English"
+			};
+		}
+
 
 		public LocalizationResourceManager LocalizationResourceManager => LocalizationResourceManager.Instance;
 	}
