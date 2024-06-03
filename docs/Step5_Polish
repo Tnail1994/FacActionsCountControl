@@ -2,3 +2,7 @@
 Adding an LocalizationManager to control the language of the app. Look here: www.youtube.com/watch?v=cf4sXULR7os
 
 Adding all keys for the languages
+
+
+## Some important info
+Deploying on local connected ios device and using images with *.svg as a reference will fail. "NET MAUI converts SVG files to PNG files. Therefore, when adding an SVG file to your . NET MAUI app project, it should be referenced from XAML or C# with a . png extension." https://learn.microsoft.com/en-us/dotnet/maui/user-interface/images/images?view=net-maui-8.0

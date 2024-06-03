@@ -45,7 +45,7 @@ namespace FacActionsCountControl.Control.ViewModels
 			_timeService = timeService;
 			_playerService = playerService;
 			_actionsCountService = actionsCountService;
-
+			_pauseResumeImageSource = "play.png";
 			if (Application.Current != null)
 			{
 				_timer = Application.Current.Dispatcher.CreateTimer();
